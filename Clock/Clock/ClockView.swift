@@ -39,8 +39,8 @@ class ClockView: UIView {
         }
     }
     
-    private var seconds = Hand(width: 1.0, length: 2.4, color: .red, value: 0)
-    private var minutes = Hand(width: 3.0, length: 3.2, color: .white, value: 0)
+    private var seconds = Hand(width: 1.0, length: 2.4, color: .red, value: 40)
+    private var minutes = Hand(width: 3.0, length: 3.2, color: .white, value: 30)
     private var hours = Hand(width: 4.0, length: 4.6, color: .white, value: 0)
     
     private var secondHandEndPoint: CGPoint {
@@ -143,6 +143,14 @@ class ClockView: UIView {
             context.strokePath()
             
             // hour hand
+            
+            context.beginPath()
+            context.move(to: clockCenter)
+            context.addLine(to: hourHandEndPoint)
+            
+            context.setStrokeColor(hours.color.cgColor)
+            context.setLineWidth(hours.width)
+            context.strokePath()
             
             // hour/minute's center
             
